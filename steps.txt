@@ -1,4 +1,5 @@
 ionic start app-name app-type
+
 ng add @angular/pwa --project app
 ionic build --prod
 npm install -g http-server
@@ -16,3 +17,9 @@ before deploy
 firebase deploy
 
 https://ionic-okta-pwa.firebaseapp.com
+
+
+//adding okta
+
+login to the okta
+add a single page application

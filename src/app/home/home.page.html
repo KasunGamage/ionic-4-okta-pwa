@@ -41,4 +41,6 @@
         <ion-label>Theme Your App</ion-label>
       </ion-item>
     </ion-list>
+    <ion-button *ngIf="!isAuthenticated" (click)="login()">Login</ion-button>
+    <ion-button *ngIf="isAuthenticated" (click)="logout()">Logout</ion-button>
 </ion-content>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
 
 const routes: Routes = [
   {
@@ -13,8 +14,10 @@ const routes: Routes = [
   },
   {
     path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
+    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule),
+    canActivate: [OktaAuthGuard]
+  },
+  { path: 'implicit/callback', component: OktaCallbackComponent }
 ];
 
 @NgModule({

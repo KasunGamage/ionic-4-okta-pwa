@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { OktaAuthModule } from '@okta/okta-angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,12 @@ import { environment } from '../environments/environment';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    OktaAuthModule.initAuth({
+      issuer: 'https://dev-355333.okta.com/oauth2/default',
+      // redirectUri: 'http://localhost:8100/implicit/callback',
+      redirectUri: 'https://ionic-okta-pwa.firebaseapp.com/implicit/callback',
+      clientId: '0oa13gl0hpc31TmnN357'
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
