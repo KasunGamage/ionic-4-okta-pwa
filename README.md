@@ -3,7 +3,7 @@ This a sample hybrid mobile application project based on ionic 4 and firebase.
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-_Currently this project is using the latest versions of all: Ionic 4 and Angular 7_
+_Currently this project is using the latest versions of all: Ionic 4 and Angular 8_
 
 ## Setup
 
@@ -29,25 +29,43 @@ Once you clone this repository, run this command on your terminal to install all
 $ npm install
 ```
 
-## Install cordova plugin Dependencies
-Run this command on your terminal to add a platform and install all needed puglins:
+## Steps
+Run this command on your terminal to add a pwa to the app and firebase hosting:
 
-iOS:
+Start new app:
 ```sh
-$ ionic cordova platform add ios
-$ ionic cordova build ios --prod --release
-$ open the project from xcode and run
+$ ionic start app-name app-type
 ```
 
-Android:
+Add pwa packege to the app:
 ```sh
-$ ionic cordova platform add android
-$ ionic cordova run android
+$ ng add @angular/pwa --project app
 ```
+
+Build and test the app:
+```sh
+$ ionic build --prod
+$ npm install -g http-server
+$ cd www
+$ http-server -o
+```
+
+Host app in firebase hosting:
+```sh
+$ npm install -g firebase-tools
+$ firebase login
+$ firebase init
+$ ? What do you want to use as your public directory? www
+  ? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+  ? File www/index.html already exists. Overwrite? No
+$ ionic build --prod // update the project build before do the production
+$ firebase deploy
+```
+
 ## Launching the App
-After installing the needed dependencies you are done, launch your app with a simple
+After deploying the application firebase giving the url like below.
 ```sh
-$ ionic serve
+$ https://ionic-okta-pwa.firebaseapp.com
 ```
 
 ## Amazing contributors
