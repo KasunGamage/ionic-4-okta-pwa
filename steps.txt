@@ -1,0 +1,18 @@
+ionic start app-name app-type
+ng add @angular/pwa --project app
+ionic build --prod
+npm install -g http-server
+cd www
+http-server -o
+npm install -g firebase-tools
+firebase login
+firebase init
+? What do you want to use as your public directory? www
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? File www/index.html already exists. Overwrite? No
+
+ionic build --prod
+before deploy
+firebase deploy
+
+https://ionic-okta-pwa.firebaseapp.com
