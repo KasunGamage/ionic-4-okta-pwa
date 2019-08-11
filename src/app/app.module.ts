@@ -23,8 +23,8 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicStorageModule.forRoot(),
     OktaAuthModule.initAuth({
       issuer: 'https://dev-355333.okta.com/oauth2/default',
-      redirectUri: 'http://localhost:8100/implicit/callback',
-      // redirectUri: 'https://ionic-okta-pwa.firebaseapp.com/implicit/callback',
+      // redirectUri: 'http://localhost:8100/implicit/callback',
+      redirectUri: 'https://ionic-okta-pwa.firebaseapp.com/implicit/callback',
       clientId: '0oa13gl0hpc31TmnN357',
       scope: 'openid profile offline_access'
     }),
