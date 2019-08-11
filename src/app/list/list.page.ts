@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/auth/authentication.service';
+import { OktaAuthService } from '@okta/okta-angular';
+import { AuthInfo } from '../models/auth-info';
 
 @Component({
   selector: 'app-list',
@@ -6,34 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  authInfo = new AuthInfo();
+
+  constructor(private authenticationService: AuthenticationService, private oktaAuthService: OktaAuthService) {
   }
 
   ngOnInit() {
+    this.getUser();
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+
+  async getUser() {
+    const user = await this.oktaAuthService.getUser();
+    console.log(user);
+    if (user) {
+    this.authInfo.Email = user.preferred_username;
+    this.authInfo.FullName = user.given_name + user.family_name;
+    this.authInfo.Username = user.preferred_username;
+    this.authInfo.token = user.sub;
+    this.authenticationService.set(this.authInfo);
+    }
+  }
+
 }

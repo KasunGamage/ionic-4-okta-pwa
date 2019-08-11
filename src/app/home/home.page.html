@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -41,6 +41,4 @@
         <ion-label>Theme Your App</ion-label>
       </ion-item>
     </ion-list>
-    <ion-button *ngIf="!isAuthenticated" (click)="login()">Login</ion-button>
-    <ion-button *ngIf="isAuthenticated" (click)="logout()">Logout</ion-button>
 </ion-content>
