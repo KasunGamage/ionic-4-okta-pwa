@@ -3,7 +3,7 @@ import { LocalStorageService } from '../utilities/local-storage.service';
 import { Platform } from '@ionic/angular';
 import { AuthInfo } from '../../models/auth-info';
 import { Subject, ReplaySubject, Observable } from 'rxjs';
-import { LocalStorage } from '../../constans/local-storage';
+import { LocalStorage } from '../../constants/local-storage';
 
 @Injectable({
   providedIn: 'root'
