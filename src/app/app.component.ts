@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OktaAuthService } from '@okta/okta-angular';
 import { AuthenticationService } from './services/auth/authentication.service';
 import { Router } from '@angular/router';
@@ -28,8 +26,6 @@ export class AppComponent{
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
     private oktaAuth: OktaAuthService,
     private navCtrl: NavController,
     private authenticationService: AuthenticationService,
@@ -48,11 +44,8 @@ export class AppComponent{
     });
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
+  async initializeApp() {
+    await this.platform.ready();
   }
 
   async logout(p: any){

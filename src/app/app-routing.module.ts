@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { OktaCallbackComponent, OktaAuthGuard } from '@okta/okta-angular';
+import { OktaCallbackComponent } from '@okta/okta-angular';
 import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
